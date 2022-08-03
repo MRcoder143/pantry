@@ -1,0 +1,23 @@
+<h1>Create a new recipe</h1>
+
+<%= form_with model: @recipe do |recipe_form| %>
+
+
+
+
+
+  <%= recipe_form.text_field :title, placeholder: "Recipe Title" %>
+  <h2>Ingredients</h2>
+  <%= recipe_form.fields_for :recipe_ingredients do |recipe_ingredient_form| %>
+    <%= recipe_ingredient_form.text_field :amount, placeholder: "Amount" %>
+      <%= recipe_ingredient_form.fields_for :ingredient do |ingredient_form|  %>
+
+<%= ingredient_form.text_field :name, placeholder: "name"%>
+<br>
+      <% end %>
+
+  <% end %>
+
+  <br />
+  <%= recipe_form.submit %>
+<% end %>
